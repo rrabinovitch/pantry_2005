@@ -19,18 +19,15 @@ class CookBook
     end
 
     ingreds.uniq
-
-    # @recipes.each do |recipe|
-    #   recipe.ingredients.each do |ingredient|
-    #     ingreds << ingredient.name
-    #   end
-    # ingreds
-    # end
-
-
     # identify ingredients list for each recipe
     # identify names of each ingredient list in each recipe
     # shovel into array
     # identify unique instances for final return val
+
+    # refactor out nesting
+  end
+
+  def highest_calorie_meal
+    @recipes.max_by { |recipe| recipe.total_calories }
   end
 end
