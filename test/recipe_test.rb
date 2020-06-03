@@ -4,11 +4,6 @@ require './lib/ingredient'
 require './lib/recipe'
 
 class RecipeTest < Minitest::Test
-  def setup
-    ingredient1 = Ingredient.new({name: "Cheese", unit: "C", calories: 100})
-    ingredient2 = Ingredient.new({name: "Macaroni", unit: "oz", calories: 30})
-  end
-
   def test_it_exists
     recipe1 = Recipe.new("Mac and Cheese")
     assert_instance_of Recipe, recipe1
@@ -24,4 +19,19 @@ class RecipeTest < Minitest::Test
     assert_equal ({}), recipe1.ingredients_required
   end
 
+  def test_it_can_add_ingreds
+    recipe1 = Recipe.new("Mac and Cheese")
+    ingredient1 = Ingredient.new({name: "Cheese", unit: "C", calories: 100})
+    ingredient2 = Ingredient.new({name: "Macaroni", unit: "oz", calories: 30})
+
+    recipe1.add_ingredient(ingredient1, 2)
+    recipe1.add_ingredient(ingredient1, 4)
+    recipe1.add_ingredient(ingredient2, 8)
+    expected_req_ingreds = {
+      ingredient1 => 6,
+      ingredient2 => 8
+    }
+
+    assert_equal expected_req_ingreds, recipe1.ingredients_required
+  end
 end
