@@ -17,6 +17,7 @@ class Recipe
     end
     ingredients
     # refactor w reduce?
+    # ingred_name should prob be ingred w/o name
   end
 
   def total_calories
