@@ -37,6 +37,10 @@ class CookBook
   end
 
   def summary
-    
+    summary = {}
+    @recipes.each do |recipe|
+      summary[recipe.name] = {}
+    end
+    require "pry"; binding.pry
   end
 end
