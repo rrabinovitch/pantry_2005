@@ -29,19 +29,3 @@ class Recipe
     # refactor w reduce?
   end
 end
-#
-# # recipe1.ingredients_required:
-# => {#<Ingredient:0x00007fa6450f94c8
-#   @calories=100,
-#   @name="Cheese",
-#   @unit="C">=>2,
-#  #<Ingredient:0x00007fa6450f9428
-#   @calories=30,
-#   @name="Macaroni",
-#   @unit="oz">=>8}
-
-# The total_calories method should sum the calories of each ingredient.
-
-# The calories for each ingredient can be calculated by multiplying the
-#  calories attribute of the Ingredient by the amount of the ingredient
-#  required for the recipe.

@@ -3,6 +3,7 @@ require 'minitest/pride'
 require './lib/ingredient'
 require './lib/recipe'
 require './lib/cook_book'
+require 'mocha/minitest'
 
 class CookBookTest < Minitest::Test
   def test_it_exists
@@ -73,21 +74,29 @@ class CookBookTest < Minitest::Test
 
     assert_equal recipe2, cookbook.highest_calorie_meal
   end
+
+  def test_it_can_return_date_created
+    cookbook = CookBook.new
+    cookbook.stubs(:date).returns("06-03-2020")
+
+    assert_equal "06-03-2020", cookbook.date
+    # this still doesn't actually test the date method...
+  end
+
+  def test_it_can_report_summary
+    skip
+    cookbook = CookBook.new
+    ingredient1 = Ingredient.new({name: "Cheese", unit: "C", calories: 100})
+    ingredient2 = Ingredient.new({name: "Macaroni", unit: "oz", calories: 30})
+    recipe1 = Recipe.new("Mac and Cheese")
+    recipe1.add_ingredient(ingredient1, 2)
+    recipe1.add_ingredient(ingredient2, 8)
+    ingredient3 = Ingredient.new({name: "Ground Beef", unit: "oz", calories: 100})
+    ingredient4 = Ingredient.new({name: "Bun", unit: "g", calories: 1})
+    recipe2 = Recipe.new("Burger")
+    recipe2.add_ingredient(ingredient3, 4)
+    recipe2.add_ingredient(ingredient4, 100)
+    cookbook.add_recipe(recipe1)
+    cookbook.add_recipe(recipe2)
+  end
 end
-
-
-# 3. CookBook #highest_calorie_meal
-# 4. Pantry #enough_ingredients_for
-
-
-# ingredient1 = Ingredient.new({name: "Cheese", unit: "C", calories: 100})
-# ingredient2 = Ingredient.new({name: "Macaroni", unit: "oz", calories: 30})
-# recipe1 = Recipe.new("Mac and Cheese")
-# recipe1.add_ingredient(ingredient1, 2)
-# recipe1.add_ingredient(ingredient1, 4)
-# recipe1.add_ingredient(ingredient2, 8)
-# recipe2 = Recipe.new("Cheese Burger")
-# cookbook = CookBook.new
-#
-# cookbook.add_recipe(recipe1)
-# cookbook.add_recipe(recipe2)

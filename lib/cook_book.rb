@@ -30,4 +30,9 @@ class CookBook
   def highest_calorie_meal
     @recipes.max_by { |recipe| recipe.total_calories }
   end
+
+  def date
+    # return date of instantiation of the object
+    # from googling this seems like an activerecord-related function...
+  end
 end

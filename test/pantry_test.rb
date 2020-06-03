@@ -61,3 +61,44 @@ class PantryTest < Minitest::Test
     assert_equal true, pantry.enough_ingredients_for?(recipe1)
   end
 end
+
+
+cookbook = CookBook.new
+# => #<CookBook:0x00007faae6a42228 @recipes=[]>
+
+# The 'date' method should return the date the cookbook is created as "mm-dd-yyyy"
+cookbook.date
+# => "04-22-2020"
+
+ingredient1 = Ingredient.new({name: "Cheese", unit: "C", calories: 100})
+# => #<Ingredient:0x00007faae6a207e0...>
+
+ingredient2 = Ingredient.new({name: "Macaroni", unit: "oz", calories: 30})
+# => #<Ingredient:0x00007faae69e3cf0...>
+
+recipe1 = Recipe.new("Mac and Cheese")
+# => #<Recipe:0x00007faae69c9698...>
+
+recipe1.add_ingredient(ingredient1, 2)
+
+recipe1.add_ingredient(ingredient2, 8)
+
+ingredient3 = Ingredient.new({name: "Ground Beef", unit: "oz", calories: 100})
+# => #<Ingredient:0x00007faae6950860...>
+
+ingredient4 = Ingredient.new({name: "Bun", unit: "g", calories: 1})
+# => #<Ingredient:0x00007faae694bb80...>
+
+recipe2 = Recipe.new("Burger")
+# => #<Recipe:0x00007faae692a110...>
+
+recipe2.add_ingredient(ingredient3, 4)
+
+recipe2.add_ingredient(ingredient4, 100)
+
+cookbook.add_recipe(recipe1)
+
+cookbook.add_recipe(recipe2)
+
+cookbook.summary
+# => [{:name=>"Mac and Cheese", :details=>{:ingredients=>[{:ingredient=>"Macaroni", :amount=>"8 oz"}, {:ingredient=>"Cheese", :amount=>"2 C"}], :total_calories=>440}}, {:name=>"Burger", :details=>{:ingredients=>[{:ingredient=>"Ground Beef", :amount=>"4 oz"}, {:ingredient=>"Bun", :amount=>"100 g"}], :total_calories=>500}}]
