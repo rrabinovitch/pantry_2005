@@ -2,10 +2,14 @@ class Pantry
   attr_reader :stock
 
   def initialize
-    @stock = {}
+    @stock = Hash.new(0)
   end
 
   def stock_check(ingredient)
-    0 if !@stock.keys.include?(ingredient.name)
+    @stock[ingredient]
+  end
+
+  def restock(ingredient, amount)
+    @stock[ingredient] += amount
   end
 end
