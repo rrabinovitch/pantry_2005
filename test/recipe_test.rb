@@ -19,4 +19,9 @@ class RecipeTest < Minitest::Test
     assert_equal "Mac and Cheese", recipe1.name
   end
 
+  def test_it_starts_w_no_ingreds
+    recipe1 = Recipe.new("Mac and Cheese")
+    assert_equal ({}), recipe1.ingredients_required
+  end
+
 end
