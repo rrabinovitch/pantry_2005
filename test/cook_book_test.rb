@@ -28,6 +28,11 @@ class CookBookTest < Minitest::Test
 end
 
 
+# 1. Recipe #total_calories
+# 2. CookBook #ingredients
+# 3. CookBook #highest_calorie_meal
+# 4. Pantry #enough_ingredients_for
+
 
 # ingredient1 = Ingredient.new({name: "Cheese", unit: "C", calories: 100})
 # ingredient2 = Ingredient.new({name: "Macaroni", unit: "oz", calories: 30})
