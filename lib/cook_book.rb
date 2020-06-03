@@ -35,4 +35,8 @@ class CookBook
     # return date of instantiation of the object
     # from googling this seems like an activerecord-related function...
   end
+
+  def summary
+    
+  end
 end
