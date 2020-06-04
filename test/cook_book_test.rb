@@ -49,6 +49,7 @@ class CookBookTest < Minitest::Test
     cookbook.add_recipe(recipe2)
 
     assert_equal ["Cheese", "Macaroni", "Ground Beef", "Bun"], cookbook.ingredients
+
   end
 
   def test_it_can_identify_highest_cal_meal
@@ -76,14 +77,20 @@ class CookBookTest < Minitest::Test
   end
 
   def test_it_can_return_date_created
+    ### REVIEW REFACTORING
     cookbook = CookBook.new
-    cookbook.stubs(:date).returns("06-03-2020")
+    Date.stubs(:today).returns(Date.new(22,6,3))
+
+    ### CHALLENGE WORK
+    # cookbook = CookBook.new
+    # cookbook.stubs(:date).returns("06-03-2020")
 
     assert_equal "06-03-2020", cookbook.date
     # this still doesn't actually test the date method...
   end
 
   def test_it_can_report_summary
+    skip
     cookbook = CookBook.new
 
     ingredient1 = Ingredient.new({name: "Cheese", unit: "C", calories: 100})

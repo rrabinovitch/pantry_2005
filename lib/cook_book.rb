@@ -1,24 +1,41 @@
+require 'date'
+
 class CookBook
-  attr_reader :recipes
+  attr_reader :recipes, :date
 
   def initialize
     @recipes = []
+    @date = Date.today.strftime("%m-%d-%Y")
   end
 
   def add_recipe(recipe)
     @recipes << recipe
   end
 
-  def ingredients
-    ingreds = []
+  def unique_ingredients ### REVIEW REFACTOR
+    @recipes.flat_map do |recipe|
+      recipe.ingredients
+    end.uniq
+  end
 
-    @recipes.each do |recipe|
-      recipe.ingredients.each do |ingredient|
-        ingreds << ingredient.name
-      end
+  def ingredients
+    ### REVIEW REFACTOR
+    unique_ingredients.map do |ingredient|
+      ingredient.name
     end
 
-    ingreds.uniq
+    ### CHALLENGE WORK
+    # ingreds = []
+    #
+    # @recipes.each do |recipe|
+    #   recipe.ingredients.each do |ingredient|
+    #     ingreds << ingredient.name
+    #   end
+    # end
+    #
+    # ingreds.uniq
+
+
     # identify ingredients list for each recipe
     # identify names of each ingredient list in each recipe
     # shovel into array
@@ -32,6 +49,9 @@ class CookBook
   end
 
   def date
+    ### REVIEW REFACTOR - in attributes
+
+    ### CHALLENGE WORK
     # return date of instantiation of the object
     # from googling this seems like an activerecord-related function...
   end
@@ -41,6 +61,5 @@ class CookBook
     @recipes.each do |recipe|
       summary[recipe.name] = {}
     end
-    require "pry"; binding.pry
   end
 end

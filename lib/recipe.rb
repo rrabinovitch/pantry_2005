@@ -11,11 +11,17 @@ class Recipe
   end
 
   def ingredients
-    ingredients = []
-    @ingredients_required.each do |ingred_name, _amount|
-      ingredients << ingred_name
-    end
-    ingredients
+    ### REVIEW REFACTOR
+    @ingredients_required.keys
+
+    ### CHALLENGE WORK
+    # ingredients = []
+    # @ingredients_required.each do |ingred_name, _amount|
+    #   ingredients << ingred_name
+    # end
+    # ingredients
+
+
     # refactor w reduce?
     # ingred_name should prob be ingred w/o name
   end
